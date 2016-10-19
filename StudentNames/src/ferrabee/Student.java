@@ -24,7 +24,7 @@ public class Student implements Comparable {
 			e.printStackTrace();
 		}
 		try {
-			setNumName(numName);
+			setNumName(1234567890);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
 		}
@@ -108,9 +108,7 @@ public String getProvName()
 public void setPostalName(String postname) throws InvalidInputException
 {	
 	
-	boolean postal= true;
-	while( postal==true)
-		{
+	
 			
 		if( postname.length()==6)
 			// checks if the postal code if correct
@@ -130,33 +128,32 @@ public void setPostalName(String postname) throws InvalidInputException
 									this.postalName=postname;
 									// sends the info back to class Student
 									
-									postal=false;
 								}
 								else
 								{
 									
 									//tells user to input a valid postal code
-									throw new InvalidInputException("Please Enter a valid postal code");
+									throw new InvalidInputException(" Please Enter a valid postal code");
 								}
 								
 							}
 							else
 							{
 							
-								throw new InvalidInputException("Please Enter a valid postal code");
+								throw new InvalidInputException(" Please Enter a valid postal code");
 							}
 							
 						}
 						else
 						{
 							
-							throw new InvalidInputException("Please Enter a valid postal code");
+							throw new InvalidInputException(" Please Enter a valid postal code");
 						}
 						
 					}
 					else
 					{
-						throw new InvalidInputException("Please Enter a valid postal code");
+						throw new InvalidInputException(" Please Enter a valid postal code");
 					}
 				}
 				else
@@ -166,7 +163,7 @@ public void setPostalName(String postname) throws InvalidInputException
 			}
 			else
 			{
-				throw new InvalidInputException("Please Enter a valid postal code");
+				throw new InvalidInputException(" Please Enter a valid postal code");
 			}
 			
 			
@@ -174,12 +171,12 @@ public void setPostalName(String postname) throws InvalidInputException
 		}
 		else
 		{
-			throw new InvalidInputException("Please Enter a valid postal code");
+			throw new InvalidInputException(" Please Enter a valid postal code");
 		}
 	}
 	
 	
-}
+
 public String getPostalName()
 {
 	return this.postalName;
@@ -192,15 +189,12 @@ public String getPostalName()
 public void setNumName(long nname) throws InvalidInputException
 {
 	
-	Boolean exit= true;
-	while(exit==true)
-	{
 		if( nname<9999999999.0&& nname>1000000000.0)
 			// makes sure that it is a valid phone number
 		{
 			this.numName=nname;
 			// sends the info back to class Student
-			exit= false;
+			
 		}
 		else
 		{
@@ -208,8 +202,6 @@ public void setNumName(long nname) throws InvalidInputException
 			
 		}
 		}
-
-}
 public long getNumName()
 {
 	return this.numName;
@@ -241,11 +233,9 @@ public Student(String firstName, String lastName,String streetAddress,String cit
 	setDateName(dateName);
 }
 
-int var1;
-int var2;
-int var3;
+
 public String toString(){
-	return var1+""+var2+""+var3;
+	return firstName+","+lastName+","+streetAddress+","+studentNumber +","+ city + ","+ provName +","+ postalName+","+numName+","+ dateName ;
 }
 
 @Override

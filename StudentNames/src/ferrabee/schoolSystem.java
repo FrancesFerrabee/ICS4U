@@ -1,5 +1,12 @@
 package ferrabee;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -53,33 +60,41 @@ public class schoolSystem {
 		studrecs.get(studrecs.size()-1).setProvName(provname);
 		// sends the info back to class Student
 		
-		
-		System.out.println("please enter your postal code");
+		boolean postal= true;
+		while( postal==true)
+			{
+		System.out.println(".Please enter your postal code");
 		// gets postal code from user
 		String postname= myInput.nextLine();
 		try {
 			studrecs.get(studrecs.size()-1).setPostalName(postname);
+			postal=false;
 		} catch (InvalidInputException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.print(e.getMessage());
 		}
+			}
 		// sends the info back to class Student
 										
 									
+
+		boolean exit= true;
+		while(exit==true)
+		{
 		
 		
-		
-		System.out.println("please enter your phone number");
+		System.out.println(". Please enter your phone number");
 		// gets phone number from user	
 		long nname= Long.parseLong(myInput.nextLine());
 		try {
 			studrecs.get(studrecs.size()-1).setNumName(nname);
+			exit= false;
 		} catch (InvalidInputException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.print(e.getMessage());
 		}
 		// sends the info back to class Student
-	
+		}
 		
 		System.out.println("please enter your birthday");
 		// gets birthday from user
@@ -102,7 +117,14 @@ public static void printInfo(Student student1){
 	System.out.println(student1.getDateName());
 	// prints out all the information of the student of the users choice
 }
-
+public static void loadStudents()
+{
+	String filename= "Students.txt";
+	BufferedReader fbr= new BufferedReader (FileReader(filename));
+	String s []= fbr.readLine().split(",");
+	Student student1= new Student(s[0], s[1],s[2], s[3], s[4], s[5], s[6] , s[7], s[8]);
+	studrecs.add(student1);
+}
 public static void printAllInfo()
 {
 	for(int i=0; i<studrecs.size(); i++)
@@ -116,7 +138,26 @@ public static void printAllInfo()
 	}
 		
 }
+public static void saveStudents()
+{
+ String filename= "Students.txt";
+FileOutputStream fileOutputStream;
+try {
+	fileOutputStream = new FileOutputStream(filename);
+	PrintStream fps= new PrintStream(fileOutputStream);
+	for( int i= 0; i<studrecs.size();i++)
+	{
+		 fps.println(studrecs.get(i).toString());
+	}
+	// saves and prints the student records
+	 fileOutputStream.close();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 
+ 
+}
 public static void removeStudent(int a)
 {
 	studrecs.remove(a);
@@ -137,6 +178,7 @@ public static void removeStudent(int a)
 		System.out.println("3: Print all students info");
 		System.out.println("4: Remove a student");
 		System.out.println("5: Sort the student records");
+		System.out.println("6: save");
 		System.out.println("10: Quit");
 		// creates a list of things for the user to choose between
 		int answer= Integer.parseInt(myInput.nextLine());
@@ -177,7 +219,7 @@ public static void removeStudent(int a)
 			while(choiceselection==false){
 			if(choice>300000001)
 			{
-				choiceselection= true;
+			
 				removeStudent(choice-300000001);
 				choiceselection= true;
 			}
@@ -188,6 +230,10 @@ public static void removeStudent(int a)
 			}
 			// gets the student the user wants to remove 
 		}
+		else if(answer==6)
+		{
+			saveStudents();
+		}
 		else if(answer==10)
 		{
 			System.out.println("bye");
@@ -196,10 +242,10 @@ public static void removeStudent(int a)
 		}
 			
 		}
-	while( quit= true);
-	{
-		System.exit(0);
-	}
+	while( quit!= true);
+	
+	System.exit(0);
+	
 	}
 
 public static void sortStudents()
