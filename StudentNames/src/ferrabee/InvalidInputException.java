@@ -1,7 +1,7 @@
 package ferrabee;
 
 public class InvalidInputException extends Exception {
-
+// if the answer is invalid it goes here.
 
 	public InvalidInputException() {
 		// TODO Auto-generated constructor stub

@@ -1,5 +1,11 @@
 package ferrabee;
 
+
+
+//By: Frances Ferrabee
+//Date due:
+//Date Started: September 27th 2016
+//this part of the program: gets the information from the schoolSystem class and saves it inside of variables.
 public class Student implements Comparable {
 	private static long idGenerator=300000000;
 	private long studentNumber;
@@ -7,17 +13,18 @@ public class Student implements Comparable {
 	private String lastName;
 	private String streetAddress;
 	private String city;
-	private String provName;
+	private ProvinceName provName;
 	private String postalName;
 	private long numName;
 	private String dateName;
+	// all variables declared
 	public Student()
 	{
 		setFirstName("");
 		setLastName("");
 		setStreetAddress("");
 		setCity("");
-		setProvName("");
+		setProvName(null);
 		try {
 			setPostalName("a1b1c1");
 		} catch (InvalidInputException e) {
@@ -29,11 +36,29 @@ public class Student implements Comparable {
 			e.printStackTrace();
 		}
 		setDateName("");
-
+		// sets a default for each input.
 
 		this.studentNumber= idGenerator;
 		idGenerator++;
+		// sets a student number for each person
 	}
+	
+	
+	public Student(String firstName, String lastName,String streetAddress,long studentNumber, String city, ProvinceName provName,String postalName,long numName,String dateName) throws InvalidInputException
+
+	{
+		setFirstName(firstName);
+		setLastName(lastName);
+		setStreetAddress(streetAddress);
+		setCity(city);
+		setProvName(provName);
+		setPostalName(postalName);
+		setNumName(numName);
+		setDateName(dateName);
+		studentNumber= idGenerator;
+		
+	}
+	
 	
 	// the first name of student	
 
@@ -89,14 +114,27 @@ public String getCity()
 }
 
 
+ProvinceName PrinceEdwardIsland=ProvinceName.PEI;
+ProvinceName Quebec= ProvinceName.QUEBEC;
+ProvinceName Ontario=ProvinceName.ONTARIO;
+ProvinceName Newfoundland= ProvinceName.NEWFOUNDLAND;
+ProvinceName Manitoba= ProvinceName.MANITOBA;
+ProvinceName Saskatchewan=ProvinceName.SASKATCHEWAN;
+ProvinceName Alberta= ProvinceName.ALBERTA;
+ProvinceName BritishColumbia=ProvinceName.BC;
+ProvinceName NorthWestTerritories= ProvinceName.NORTHWESTTERRITORIES;
+ProvinceName Yukon= ProvinceName.YUKON;
+ProvinceName Nunavut= ProvinceName.NUNAVUT;
+ProvinceName NewBrunswich= ProvinceName.NEWBRUNSWICH;
+
 
 //the province name of student
 
-public void setProvName(String pname)
+public void setProvName(ProvinceName pname)
 {
 	this.provName=pname;
 }
-public String getProvName()
+public ProvinceName getProvName()
 {
 	return this.provName;
 }
@@ -220,18 +258,8 @@ public String getDateName()
 	return this.dateName;
 }
 
-public Student(String firstName, String lastName,String streetAddress,String city, String provName,String postalName,long numName,String dateName) throws InvalidInputException
 
-{
-	setFirstName(firstName);
-	setLastName(lastName);
-	setStreetAddress(streetAddress);
-	setCity(city);
-	setProvName(provName);
-	setPostalName(postalName);
-	setNumName(numName);
-	setDateName(dateName);
-}
+
 
 
 public String toString(){
@@ -242,9 +270,9 @@ public String toString(){
 public int compareTo(Object o) {
 	// TODO Auto-generated method stub
 	return 0;
-}
-}
 
+}
+}
 
 
 
