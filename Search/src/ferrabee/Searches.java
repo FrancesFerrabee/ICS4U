@@ -1,6 +1,6 @@
 package ferrabee;
 
-public class searches {
+public class Searches {
 
 	public static int binarySearch(int[]a, int target)
 	{
