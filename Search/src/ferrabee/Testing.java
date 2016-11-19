@@ -67,45 +67,52 @@ else if(answering.equalsIgnoreCase("doubles")|| answering.equalsIgnoreCase("doub
 	else 
 	{
 		System.out.println("Found at spot "+ Searches.linearSearch(a, target));
+		// calls method linearSearch and outputs where it is found in the array
 	}
 }
 else 
 {
 	int[] a= {1,2,4,7,9,10,14,20,29,42};
-	
+	// creates array a with integer values
 	System.out.println("The following numbers are in this array:1,2,4,7,9,10,14,20,29,42 ");
 	System.out.println("What is the number you are trying to look for?");
 	int target= Integer.parseInt(scan.nextLine());
 
 	System.out.println("How would you like to find it by linear or binary search?");
 	answer= scan.nextLine();
-
+	// lets the user pick what form of search they would like
 	if(answer.equalsIgnoreCase("binary")|| answer.equalsIgnoreCase("binary Search"))
 	{
 		System.out.println("Found at spot "	+ Searches.binarySearch(a, target));
+		// calls method binarSearch and outputs where it is found in the array
 	}
 	else 
 	{
 		System.out.println("Found at spot "+ Searches.linearSearch(a, target));
+		// calls method linearSearch and outputs where it is found in the array
 	}
 }
 }
 
 else
 {
+	//Now we are in sort
 	System.out.println("would you like an array of strings? Doubles? or integers?");
 	answering= scan.nextLine();
 	if(answering.equalsIgnoreCase("strings")|| answering.equalsIgnoreCase("string array"))
 	{
 		String a[]=new String[10];
+		// creates a string array with 10 values
 		System.out.println("Please enter 10 Strings you would like to sort");
 		for (int i=0; i<10; i++)
 		{
 			System.out.println("Please, enter a string ");
 			a[i]= scan.nextLine();
+			// asks the user to enter 10 strings and puts it into an array
 		}
 		System.out.println("How would you like to sort? Insertion sort or selection sort");
 		answer= scan.nextLine();
+		// asks the user how they would like to sort there array
 		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
 		{
 			
@@ -118,63 +125,77 @@ else
 	else if(answering.equalsIgnoreCase("doubles")|| answering.equalsIgnoreCase("double array"))
 	{
 		double a[]=new double[10];
+		// creates a double array with 10 values
 		System.out.println("Please enter 10 doubles you would like to sort");
 		for (int i=0; i<10; i++)
 		{
 			System.out.println("Please, enter a double ");
 			a[i]= Double.parseDouble(scan.nextLine());
+			// asks the user to enter 10 doubles and puts it into an array
 		}
 		System.out.println("How would you like to sort? Insertion sort or selection sort");
 		answer= scan.nextLine();
+		// asks the user how they would like to sort there array
 		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
 		{
 			
 			Sort.insertionSort(a);
+			// calls method insertionSort which sorts the numbers by insertion.
 			System.out.print(" all sorted: ");
 			for( int i=9; i>-1; i--)
 			{
 				System.out.print(" ,"+a[i]);
-			}
-			
-		}
-		else
-		{
-			Sort.insertionSort(a);
-			System.out.print(" all sorted: ");
-			for( int i=0; i<a.length; i++)
-			{
-				System.out.print(" ,"+a[i]);
-			}
-		}
-	}
-	else
-	{
-		int a[]=new int[10];
-		System.out.println("Please enter 10 integers you would like to sort");
-		for (int i=0; i<10; i++)
-		{
-			System.out.println("Please, enter an integer ");
-			a[i]= Integer.parseInt(scan.nextLine());
-		}
-		System.out.println("How would you like to sort? Insertion sort or selection sort");
-		answer= scan.nextLine();
-		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
-		{
-			Sort.insertionSort(a);
-			System.out.print(" all sorted: ");
-			for( int i=9; i>-1; i--)
-			{
-				System.out.print(" ,"+a[i]);
+				// outputs all the values in the array now sorted
 			}
 			
 		}
 		else
 		{
 			Sort.selectionSort(a);
+			// calls method selectionSort which sorts the numbers by slection.
 			System.out.print(" all sorted: ");
 			for( int i=0; i<a.length; i++)
 			{
 				System.out.print(" ,"+a[i]);
+				// outputs all the values in the array now sorted
+			}
+		}
+	}
+	else
+	{
+		int a[]=new int[10];
+		// creates an integer array with 10 values
+		System.out.println("Please enter 10 integers you would like to sort");
+		for (int i=0; i<10; i++)
+		{
+			System.out.println("Please, enter an integer ");
+			a[i]= Integer.parseInt(scan.nextLine());
+			// asks the user to enter 10 integers and puts it into an array
+		}
+		System.out.println("How would you like to sort? Insertion sort or selection sort");
+		answer= scan.nextLine();
+		// asks the user how they would like to sort there array
+		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
+		{
+			Sort.insertionSort(a);
+			// calls method insertionSort which sorts the numbers by insertion.
+			System.out.print(" all sorted: ");
+			for( int i=9; i>-1; i--)
+			{
+				System.out.print(" ,"+a[i]);
+				// outputs all the values in the array now sorted
+			}
+			
+		}
+		else
+		{
+			Sort.selectionSort(a);
+			// calls method slectionSort which sorts the numbers by insertion.
+			System.out.print(" all sorted: ");
+			for( int i=0; i<a.length; i++)
+			{
+				System.out.print(" ,"+a[i]);
+				// outputs all the values in the array now sorted
 			}
 			
 		}
