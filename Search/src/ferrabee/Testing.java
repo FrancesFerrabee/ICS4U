@@ -110,7 +110,7 @@ else
 			a[i]= scan.nextLine();
 			// asks the user to enter 10 strings and puts it into an array
 		}
-		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort or selection sort");
+		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort, quick sort or selection sort");
 		answer= scan.nextLine();
 		// asks the user how they would like to sort there array
 		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
@@ -137,8 +137,8 @@ else
 		}
 		else if(answer.equalsIgnoreCase("merge")|| answer.equalsIgnoreCase("merge sort"))
 		{
-			Sort.bubbleSort(a);
-			// calls method bubbleSort which sorts the numbers by insertion.
+			Sort.mergeSort(a);
+			// calls method mergeSort which sorts the numbers by merging them together.
 			System.out.print(" all sorted : ");
 			for( int i=0; i<a.length; i++)
 			{
@@ -150,7 +150,7 @@ else
 		else if( answer.equalsIgnoreCase("bubble")||answer.equalsIgnoreCase("bubble sort"))
 		{
 			Sort.bubbleSort(a);
-			// calls method bubbleSort which sorts the numbers by selection.
+			// calls method bubbleSort which sorts the numbers by bubbling up the largest number.
 			System.out.print(" all sorted: ");
 			for( int i=0; i<a.length; i++)
 			{
@@ -170,7 +170,7 @@ else
 			a[i]= Double.parseDouble(scan.nextLine());
 			// asks the user to enter 10 doubles and puts it into an array
 		}
-		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort or selection sort");
+		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort, quick sort or selection sort");
 		answer= scan.nextLine();
 		// asks the user how they would like to sort there array
 		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
@@ -199,8 +199,8 @@ else
 		}
 		else if(answer.equalsIgnoreCase("merge")|| answer.equalsIgnoreCase("merge sort"))
 		{
-			Sort.bubbleSort(a);
-			// calls method bubbleSort which sorts the numbers by insertion.
+			Sort.mergeSort(a);
+			// calls method mergeSort which sorts the numbers by merging them together.
 			System.out.print(" all sorted : ");
 			for( int i=0; i<a.length; i++)
 			{
@@ -212,7 +212,7 @@ else
 	else if (answer.equalsIgnoreCase("bubble")|| answer.equalsIgnoreCase("bubble sort"))
 	{
 		Sort.bubbleSort(a);
-		// calls method bubbleSort which sorts the numbers by selection.
+		// calls method bubbleSort which sorts the numbers by bubbling up the largest number.
 		System.out.print(" all sorted: ");
 		for( int i=0; i<a.length; i++)
 		{
@@ -232,7 +232,7 @@ else
 			a[i]= Integer.parseInt(scan.nextLine());
 			// asks the user to enter 10 integers and puts it into an array
 		}
-		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort or selection sort");
+		System.out.println("How would you like to sort? Insertion sort, bubble sort, merge sort, quick sort or selection sort");
 		answer= scan.nextLine();
 		// asks the user how they would like to sort there array
 		if(answer.equalsIgnoreCase("insertion")|| answer.equalsIgnoreCase("insertion sort"))
@@ -251,7 +251,7 @@ else
 		else if (answer.equalsIgnoreCase("selection")|| answer.equalsIgnoreCase("selection sort"))
 		{
 			Sort.selectionSort(a);
-			// calls method slectionSort which sorts the numbers by insertion.
+			// calls method slectionSort which sorts the numbers by selection.
 			System.out.print(" all sorted: ");
 			for( int i=0; i<a.length; i++)
 			{
@@ -263,7 +263,7 @@ else
 		else if(answer.equalsIgnoreCase("bubble")|| answer.equalsIgnoreCase("bubble sort"))
 		{
 			Sort.bubbleSort(a);
-			// calls method bubbleSort which sorts the numbers by insertion.
+			// calls method bubbleSort which sorts the numbers by bubbling up the largest number.
 			System.out.print(" all sorted : ");
 			for( int i=0; i<a.length; i++)
 			{
@@ -274,8 +274,20 @@ else
 		}
 		else if(answer.equalsIgnoreCase("merge")|| answer.equalsIgnoreCase("merge sort"))
 		{
-			Sort.bubbleSort(a);
-			// calls method bubbleSort which sorts the numbers by insertion.
+			Sort.mergeSort(a);
+			// calls method mergeSort which sorts the numbers by merging them together.
+			System.out.print(" all sorted : ");
+			for( int i=0; i<a.length; i++)
+			{
+				System.out.print(" ,"+a[i]);
+				// outputs all the values in the array now sorted
+			}
+			
+		}
+		else if(answer.equalsIgnoreCase("quick")|| answer.equalsIgnoreCase("quick sort"))
+		{
+			Sort.quickSort(a);
+			// calls method quickSort which sorts the numbers by choosing a number and putting it in the correct spot in the array.
 			System.out.print(" all sorted : ");
 			for( int i=0; i<a.length; i++)
 			{
