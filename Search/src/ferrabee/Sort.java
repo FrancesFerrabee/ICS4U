@@ -2,37 +2,268 @@ package ferrabee;
 
 public class Sort {
 
+	public static int[] quickSort(int []a)
+	{	
+		int i=0;
+		int j=a.length-1;
+		quickSort(a, i, j);
+		// sends the value of i which is at the far left of the array and j which is to the far right of the array 
+		return a;
+		// returns the sorted array.
 	
-    private int[] numbers;
-    private int[] helper;
-
-
-	public static void mergeSort(int array[], int start, int end)
+	}
+	
+	private static void quickSort(int a[], int i, int j)
 	{
-		if( array.length==0){
-			return;
-		}
-		int a= array.length/2;
-		int [] c= new int[a];
-			for( int i=start; i<end; i++)
+
+			int num = partition(a, i, j);
+			// calls the method partition
+	
+			if (i< num - 1)
 			{
-				c[i]= array[i];
+				quickSort(a, i, num - 1);
+				// calls the method again, but replaces the j value with the num subtract one.
 			}
-		mergeSort(c, start, a);
-		
-		int b=array.length/2;
-		mergeSort(rightHalf);
-		
-		merge(lefthalf, righthalf);
+			if (num < j)
+			{
+				quickSort(a, num,j);
+				// calls the method again, but replaces the i value with num.
+			}
 		
 	}
-public static int caller(int []a)
+	
+	private static int partition (int a[], int i, int j)
+	{
+
+		int  mid= (i+j)/2;
+		int pivot = a[mid];
+		// creates a pivot number
+
+		while (i <= j) 
+		{
+			
+			while (a[i] < pivot)
+			{
+				i++;
+			}
+			while (a[j] > pivot)
+			{
+				j= j-1;
+			}
+			if (i <= j) 
+			{
+				swap(a, i,j);
+				i++;
+				j= j-1;
+			}
+		}
+
+		return i;
+		// if i is greater then j then return the value of i.
+
+	}
+	
+	private static void mergeSort(String a[], int start, int end)
+    {
+    	if(start<end)
+    	{
+    		int mid = (end + start) / 2;
+    		mergeSort(a, start, mid);
+    		// get left half of the array
+
+    		mergeSort(a, mid+1, end);
+    		// get right half of the array
+    		merge(a, start, mid, end);
+    		// calls method merge which merges left and right side of the array
+    	}
+    }
+    
+    public static String[] mergeSort(String []a)
+    {
+    	int start = 0;
+    	int end = a.length-1;
+    	mergeSort(a, start, end);
+    	// calls mergeSort.
+    	return a;
+    }
+
+
+private static void merge(String[] array,int start, int mid, int end )
 {
-	int start= 0;
-	int end= a.length;
-	mergeSort(a, start, end);
+	String [] c = new String[array.length];
+	for (int i = 0; i < array.length; i++)
+	{
+		c[i] = array[i];
+	}
+	//duplicates the array "array" into array "c".
+	int count = start;
+	int num = mid+1;
+	int i = start;
+	while (count <= mid && num <= end)
+	{
+		if (c[count].compareTo(c[num])<=0) 
+		{
+			array[i] =c[count];
+			count++;
+			// makes the value of count go up when c at count is less than or equal to c at num.
+		} 
+		else
+		{
+			array[i] = c[num];
+			num++;
+			// makes the value of num go up when c at count is greater then c at num.
+		}
+		i++;
+		// every time it goes through the while loop the value of i goes up by 1.
+	}
+	while (count <= mid) {
+		array[i] = c[count];
+		i++;
+		count++;
+		// the value of both i and count will go up by one while the value of count is less then or equal to mid.
+	}
+	while(num <= end){
+		array[i] = c[num];
+		i++;
+		num++;
+		// the value of both i and num will go up by one while the value of num is less then or equal to end.
+	}
 }
 
+
+    private static void mergeSort(int a[], int start, int end)
+    {
+    	if(start<end)
+    	{
+    		int mid = (end + start) / 2;
+    		mergeSort(a, start, mid);
+    		// get left half of the array
+
+    		mergeSort(a, mid+1, end);
+    		// get right half of the array
+    		merge(a, start, mid, end);
+    		// calls method merge which merges left and right side of the array
+    	}
+    }
+    
+    public static int[] mergeSort(int []a)
+    {
+    	int start = 0;
+    	int end = a.length-1;
+    	mergeSort(a, start, end);
+    	// calls mergeSort.
+    	return a;
+    }
+
+
+private static void merge(int[] array,int start, int mid, int end )
+{
+	int [] c = new int[array.length];
+	for (int i = 0; i < array.length; i++)
+	{
+		c[i] = array[i];
+	}
+	//duplicates the array "array" into array "c".
+	int count = start;
+	int num = mid+1;
+	int i = start;
+	while (count <= mid && num <= end)
+	{
+		if (c[count] <= c[num]) 
+		{
+			array[i] =c[count];
+			count++;
+			// makes the value of count go up when c at count is less than or equal to c at num.
+		} 
+		else
+		{
+			array[i] = c[num];
+			num++;
+			// makes the value of num go up when c at count is greater then c at num.
+		}
+		i++;
+		// every time it goes through the while loop the value of i goes up by 1.
+	}
+	while (count <= mid) {
+		array[i] = c[count];
+		i++;
+		count++;
+		// the value of both i and count will go up by one while the value of count is less then or equal to mid.
+	}
+	while(num <= end){
+		array[i] = c[num];
+		i++;
+		num++;
+		// the value of both i and num will go up by one while the value of num is less then or equal to end.
+	}
+}
+
+private static void mergeSort(double a[], int start, int end)
+{
+	if(start<end)
+	{
+		int mid = (end + start) / 2;
+		mergeSort(a, start, mid);
+		// get left half of the array
+
+		mergeSort(a, mid+1, end);
+		// get right half of the array
+		merge(a, start, mid, end);
+		// calls method merge which merges left and right side of the array
+	}
+}
+
+public static double[] mergeSort(double []a)
+{
+	int start = 0;
+	int end = a.length-1;
+	mergeSort(a, start, end);
+	// calls mergeSort.
+	return a;
+}
+
+
+private static void merge(double[] array,int start, int mid, int end )
+{
+double [] c = new double[array.length];
+for (int i = 0; i < array.length; i++)
+{
+	c[i] = array[i];
+}
+//duplicates the array "array" into array "c".
+int count = start;
+int num = mid+1;
+int i = start;
+while (count <= mid && num <= end)
+{
+	if (c[count] <= c[num]) 
+	{
+		array[i] =c[count];
+		count++;
+		// makes the value of count go up when c at count is less than or equal to c at num.
+	} 
+	else
+	{
+		array[i] = c[num];
+		num++;
+		// makes the value of num go up when c at count is greater then c at num.
+	}
+	i++;
+	// every time it goes through the while loop the value of i goes up by 1.
+}
+while (count <= mid) {
+	array[i] = c[count];
+	i++;
+	count++;
+	// the value of both i and count will go up by one while the value of count is less then or equal to mid.
+}
+while(num <= end){
+	array[i] = c[num];
+	i++;
+	num++;
+	// the value of both i and num will go up by one while the value of num is less then or equal to end.
+}
+}
 
 	public static int[] bubbleSort( int [ ]a )
 	{
