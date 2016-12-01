@@ -52,7 +52,7 @@ public class Searches {
 				// goes through the for loop until the value of a is equal to the target
 				return (i+1);
 				// returns the spot the target is found
-				
+
 			}
 		}
 		return -1;
